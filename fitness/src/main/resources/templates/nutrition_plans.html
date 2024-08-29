@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nutrition Plans</title>
+</head>
+<body>
+    <h1>Nutrition Plans</h1>
+    <a th:href="@{/nutrition/new}">Add New Nutrition Plan</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nutrition : ${nutritionPlans}">
+                <td th:text="${nutrition.id}">1</td>
+                <td th:text="${nutrition.title}">Nutrition Plan Title</td>
+                <td th:text="${nutrition.description}">Nutrition Plan Description</td>
+                <td>
+                    <a th:href="@{/nutrition/edit/{id}(id=${nutrition.id})}">Edit</a>
+                    <a th:href="@{/nutrition/delete/{id}(id=${nutrition.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

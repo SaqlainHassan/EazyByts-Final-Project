@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Community Posts</title>
+</head>
+<body>
+    <h1>Community Posts</h1>
+    <a th:href="@{/community/new}">Add New Post</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}">1</td>
+                <td th:text="${post.content}">Community Content</td>
+                <td th:text="${#dates.format(post.postedAt, 'yyyy-MM-dd HH:mm')}">2024-08-12 14:30</td>
+                <td>
+                    <a th:href="@{/community/edit/{id}(id=${post.id})}">Edit</a>
+                    <a th:href="@{/community/delete/{id}(id=${post.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
